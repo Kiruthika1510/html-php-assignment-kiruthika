@@ -1,0 +1,31 @@
+<?php
+// Title
+echo "Division Table using for-loop\n\n";
+
+// Print top header row (columns)
+echo "     |";
+for ($col = 1; $col <= 3; $col++) {
+    // Print each column number, right-aligned (4 spaces wide)
+    printf(" %5d", $col);
+}
+echo "\n";
+
+// Print a separator line
+echo str_repeat("-", 28) . "\n";
+
+// Print rows
+for ($row = 1; $row <= 3; $row++) {
+    // Print row number (left column)
+    printf("  %d  |", $row);
+
+    // Print each cell in the row (division result)
+    for ($col = 1; $col <= 3; $col++) {
+        $result = $row / $col;
+        // Print result with 2 decimal places, 5 characters wide
+        printf(" %5.2f", $result);
+    }
+
+    // Newline after each row
+    echo "\n";
+}
+?>
