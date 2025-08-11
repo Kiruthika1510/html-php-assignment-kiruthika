@@ -1,0 +1,21 @@
+<?php
+function checkGrade($marks) {
+    if ($marks >= 75) {
+        return "First Class";
+    } elseif ($marks >= 60 && $marks <= 74) {
+        return "Second Class";
+    } elseif ($marks >= 40 && $marks <= 59) {
+        return "Third Class";
+    } else {
+        return "Fail";
+    }
+}
+
+// Example usage:
+$studentMarks = [82, 65, 58, 37, 75, 60, 39, 90];
+
+foreach ($studentMarks as $marks) {
+    $grade = checkGrade($marks);
+    echo "Marks: $marks% - Grade: $grade\n";
+}
+?>
