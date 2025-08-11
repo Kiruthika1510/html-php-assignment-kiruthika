@@ -1,0 +1,11 @@
+<?php
+$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+$pass = '';
+for ($i = 0; $i < 10; $i++) {
+    $pass .= $chars[rand(0, strlen($chars) - 1)];
+}
+echo "Password: $pass";
+?>
+
+OUTPUT:
+Password: 3qX$iMuLsA
