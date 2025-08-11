@@ -1,0 +1,8 @@
+<?php
+$a = 5; $b = "5"; $c = 10;
+var_dump($a == $b); // true (same value)
+var_dump($a == $c); // false
+?>
+
+OUTPUT:
+bool(true) bool(false)
