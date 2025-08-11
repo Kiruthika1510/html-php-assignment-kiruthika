@@ -1,0 +1,9 @@
+<?php
+$text = "PHP is great and PHP is easy to learn.";
+
+$word = "PHP";
+echo "Occurrences: " . substr_count($text, $word);
+?>
+
+OUTPUT:
+Occurrences: 2
