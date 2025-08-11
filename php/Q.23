@@ -1,0 +1,18 @@
+<!-- product_list.php -->
+<a href="product.php?id=101">View Product</a>
+
+<!-- product.php -->
+<?php
+echo "Product ID: " . $_GET['id'];
+?>
+
+<!-- contact.php -->
+<form action="submit.php" method="post">
+  Name: <input type="text" name="name">
+  <input type="submit">
+</form>
+
+<!-- submit.php -->
+<?php
+echo "Hello, " . $_POST['name'];
+?>
