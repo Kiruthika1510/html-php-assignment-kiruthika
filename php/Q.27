@@ -1,0 +1,12 @@
+
+<?php
+$a = 10; $b = 3;
+echo $a + $b; // 13 (Addition)
+echo $a - $b; // 7  (Subtraction)
+echo $a * $b; // 30 (Multiplication)
+echo $a / $b; // 3.333... (Division)
+echo $a % $b; // 1  (Modulus)
+?>
+
+OUTPUT:
+137303.33333333333331
