@@ -1,0 +1,12 @@
+<?php
+$name = "Ram";
+
+if (isset($name)) {
+    echo "Variable is set and not NULL.";
+} else {
+    echo "Variable is not set or is NULL.";
+}
+?>
+
+output:
+Variable is set and not NULL.
