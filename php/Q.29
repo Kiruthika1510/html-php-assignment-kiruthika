@@ -1,0 +1,1 @@
+rand() – Generates a random number.  abs() – Returns the absolute (positive) value.  str_replace() – Replaces all occurrences of a string with another.  pi() – Returns the value of π (3.141592...).  ceil() – Rounds a number up to the nearest integer.
