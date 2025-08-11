@@ -1,0 +1,24 @@
+<?php
+// Initialize variables
+$name = $email = $message = '';
+$confirmation = '';
+
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get form data and sanitize
+    $name = htmlspecialchars($_POST['name'] ?? '');
+    $email = htmlspecialchars($_POST['email'] ?? '');
+    $message = htmlspecialchars($_POST['message'] ?? '');
+    
+    // Create confirmation message
+    if (!empty($name) && !empty($email)) {
+        $confirmation = "<div class='confirmation'>
+                            <h3>Thank You, $name!</h3>
+                            <p>We've received your message and will contact you at $email shortly.</p>
+                         </div>";
+    } else {
+        $confirmation = "<div class='error'>Please fill in both name and email fields.</div>";
+    }
+}
+?>
+
