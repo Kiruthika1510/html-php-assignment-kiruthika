@@ -1,0 +1,26 @@
+<?php
+// Define student marks in an associative array [name => marks]
+$students = [
+    "Alice" => 92,
+    "Bob" => 78,
+    "Charlie" => 56,
+    "Diana" => 85,
+    "Ethan" => 43,
+    "Fiona" => 67
+];
+
+// Function to determine grade based on marks
+function getGrade($marks) {
+    if ($marks >= 90) return 'A';
+    if ($marks >= 80) return 'B';
+    if ($marks >= 70) return 'C';
+    if ($marks >= 60) return 'D';
+    return 'F';
+}
+
+// Loop through students and display grades
+foreach ($students as $name => $marks) {
+    $grade = getGrade($marks);
+    echo "$name: Marks = $marks, Grade = $grade\n";
+}
+?>
