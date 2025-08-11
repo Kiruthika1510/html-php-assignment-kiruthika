@@ -1,0 +1,26 @@
+<?php
+function deal($costA, $sizeA, $costB, $sizeB) {
+    $valueA = $sizeA / $costA;  // Volume per rupee for Drink A
+    $valueB = $sizeB / $costB;  // Volume per rupee for Drink B
+    
+    if ($valueA > $valueB) {
+        return "Drink A";
+    } elseif ($valueB > $valueA) {
+        return "Drink B";
+    } else {
+        return "Both have equal value";
+    }
+}
+
+// Drink specifications
+$drinkA_cost = 25;
+$drinkA_size = 11;
+$drinkB_cost = 23;
+$drinkB_size = 9;
+
+// Get the better deal
+$betterDeal = deal($drinkA_cost, $drinkA_size, $drinkB_cost, $drinkB_size);
+
+// Output result
+echo "Choose $betterDeal for better value per rupee.";
+?>
