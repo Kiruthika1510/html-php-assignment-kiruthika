@@ -1,0 +1,12 @@
+34. Replace all occurrences of a specific word with another word in a string using regular expressions in
+PHP.
+<?php
+// Original string
+$text = "I love apples. Apples are my favorite fruit. I eat apples every day.";
+
+// Replace 'apples' (case-insensitive) with 'mangoes'
+$result = preg_replace("/apples/i", "mangoes", $text);
+
+// Display the result
+echo $result;
+?>
