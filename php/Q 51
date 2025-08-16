@@ -1,0 +1,10 @@
+51. Differentiate between array_shift() and array_unshift() in PHP.
+code:
+<?php
+$fruits = array("Apple", "Banana", "Mango", "Orange");
+
+$first = array_shift($fruits);
+
+echo "Removed Element: $first <br>";
+print_r($fruits);
+?>
