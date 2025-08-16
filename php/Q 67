@@ -1,0 +1,25 @@
+67. Construct a program that tokenizes a sentence into words using regular expressions. Then, count the
+number of occurrences of each word and display the results.
+<?php
+// Sample sentence
+$sentence = "PHP is great. PHP is powerful! PHP is easy to learn.";
+
+// Step 1: Convert sentence to lowercase (optional for case-insensitive counting)
+$sentence = strtolower($sentence);
+
+// Step 2: Tokenize sentence into words using regex
+// \w+ matches sequences of letters, digits, and underscores
+preg_match_all('/\w+/', $sentence, $matches);
+
+// $matches[0] now contains all words
+$words = $matches[0];
+
+// Step 3: Count occurrences of each word
+$wordCounts = array_count_values($words);
+
+// Step 4: Display the results
+echo "Word Occurrences:\n";
+foreach ($wordCounts as $word => $count) {
+    echo "$word : $count\n";
+}
+?>
