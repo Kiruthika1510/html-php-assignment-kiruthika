@@ -1,0 +1,39 @@
+49. A sports team wants to evaluate player performance based on various statistical metrics. Design a system
+that utilizes numerical types and mathematical operators to calculate performance indices, averages, and
+rankings. How would you handle large datasets and perform complex calculations efficiently?
+code:
+<?php
+// Sample dataset: players with their stats
+$players = [
+    ["name" => "Player A", "runs" => 450, "matches" => 10, "wickets" => 12],
+    ["name" => "Player B", "runs" => 520, "matches" => 12, "wickets" => 8],
+    ["name" => "Player C", "runs" => 300, "matches" => 8, "wickets" => 15],
+    ["name" => "Player D", "runs" => 700, "matches" => 15, "wickets" => 5],
+];
+
+// Function to calculate performance index
+function calculatePerformance($player) {
+    // Example formula: weighted score = (batting avg * 0.6) + (bowling avg * 0.4)
+    $batting_avg = $player['runs'] / $player['matches'];
+    $bowling_avg = $player['wickets'] / $player['matches'];
+    
+    $performance_index = ($batting_avg * 0.6) + ($bowling_avg * 0.4);
+    return round($performance_index, 2);
+}
+
+// Add performance score to each player
+foreach ($players as $key => $player) {
+    $players[$key]['performance'] = calculatePerformance($player);
+}
+
+// Sort players by performance index (highest first)
+usort($players, function($a, $b) {
+    return $b['performance'] <=> $a['performance'];
+});
+
+// Display summary report
+echo "Player Performance Rankings:\n";
+foreach ($players as $rank => $player) {
+    echo ($rank+1) . ". " . $player['name'] . " - Score: " . $player['performance'] . "\n";
+}
+?>
