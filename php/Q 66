@@ -1,0 +1,5 @@
+66. Difference between count() and sizeof() function in PHP.
+<?php
+$fruits = ["apple", "banana", "cherry"];
+echo count($fruits); // Output: 3
+?>
