@@ -1,0 +1,106 @@
+56. What are all the Functions available to sort a PHP array?
+code:
+<?php
+// Sample array
+$numbers = array(4, 2, 8, 6, 1);
+$assoc   = array("d"=>4, "a"=>2, "c"=>8, "b"=>6, "e"=>1);
+
+echo "Original Numeric Array: ";
+print_r($numbers);
+echo "<br>Original Associative Array: ";
+print_r($assoc);
+echo "<hr>";
+
+// 1. sort() - Sorts array in ascending order (values only, index reindexed)
+$temp = $numbers;
+sort($temp);
+echo "sort(): ";
+print_r($temp);
+echo "<br>";
+
+// 2. rsort() - Sorts array in descending order
+$temp = $numbers;
+rsort($temp);
+echo "rsort(): ";
+print_r($temp);
+echo "<br>";
+
+// 3. asort() - Sorts associative array in ascending order, preserves keys
+$temp = $assoc;
+asort($temp);
+echo "asort(): ";
+print_r($temp);
+echo "<br>";
+
+// 4. arsort() - Sorts associative array in descending order, preserves keys
+$temp = $assoc;
+arsort($temp);
+echo "arsort(): ";
+print_r($temp);
+echo "<br>";
+
+// 5. ksort() - Sorts associative array by keys ascending
+$temp = $assoc;
+ksort($temp);
+echo "ksort(): ";
+print_r($temp);
+echo "<br>";
+
+// 6. krsort() - Sorts associative array by keys descending
+$temp = $assoc;
+krsort($temp);
+echo "krsort(): ";
+print_r($temp);
+echo "<br>";
+
+// 7. natsort() - Natural order sorting, case sensitive
+$temp = array("img12.png", "img10.png", "img2.png", "img1.png");
+natsort($temp);
+echo "natsort(): ";
+print_r($temp);
+echo "<br>";
+
+// 8. natcasesort() - Natural order sorting, case insensitive
+$temp = array("img12.png", "Img10.png", "img2.png", "img1.png");
+natcasesort($temp);
+echo "natcasesort(): ";
+print_r($temp);
+echo "<br>";
+
+// 9. usort() - User-defined sorting by values
+$temp = $numbers;
+usort($temp, function($a, $b) {
+    return $a <=> $b; // spaceship operator
+});
+echo "usort(): ";
+print_r($temp);
+echo "<br>";
+
+// 10. uasort() - User-defined sorting for associative array, preserves keys
+$temp = $assoc;
+uasort($temp, function($a, $b) {
+    return $a <=> $b;
+});
+echo "uasort(): ";
+print_r($temp);
+echo "<br>";
+
+// 11. uksort() - User-defined sorting by keys
+$temp = $assoc;
+uksort($temp, function($a, $b) {
+    return strcmp($a, $b);
+});
+echo "uksort(): ";
+print_r($temp);
+echo "<br>";
+
+// 12. array_multisort() - Sort multiple arrays or multi-dimensional arrays
+$array1 = array("Dog", "Cat", "Horse", "Bear", "Zebra");
+$array2 = array(2, 4, 1, 3, 5);
+array_multisort($array1, SORT_ASC, $array2, SORT_NUMERIC);
+echo "array_multisort(): ";
+print_r($array1);
+print_r($array2);
+echo "<br>";
+
+?>
