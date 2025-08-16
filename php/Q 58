@@ -1,0 +1,16 @@
+<?php
+// Input string containing email addresses
+$text = "Contact us at support@example.com, sales@shop.com or admin@test.org for more info.";
+
+// Regular expression pattern for email
+$pattern = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}/";
+
+// Use preg_match_all to find all emails
+preg_match_all($pattern, $text, $matches);
+
+// Display the extracted email addresses
+echo "Extracted Email Addresses:\n";
+foreach ($matches[0] as $email) {
+    echo $email . "\n";
+}
+?>
