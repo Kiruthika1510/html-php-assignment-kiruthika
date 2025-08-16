@@ -1,0 +1,36 @@
+64. A retail company wants to forecast future sales based on historical data. Develop a system that utilizes
+numerical types, mathematical operators to analyze sales trends, calculate growth rates, and generate
+sales forecasts using arrays in php.
+code:
+<?php
+// Historical monthly sales data (in units or revenue)
+$sales = [1000, 1200, 1300, 1250, 1400, 1500];
+
+// Step 1: Calculate monthly growth rates
+$growthRates = [];
+for ($i = 1; $i < count($sales); $i++) {
+    $growth = ($sales[$i] - $sales[$i - 1]) / $sales[$i - 1]; // Growth rate formula
+    $growthRates[] = $growth;
+}
+
+// Step 2: Calculate average growth rate
+$avgGrowth = array_sum($growthRates) / count($growthRates);
+
+// Step 3: Forecast future sales (next 3 months)
+$futureSales = [];
+$lastMonthSales = end($sales);
+for ($i = 1; $i <= 3; $i++) {
+    $forecast = $lastMonthSales * (1 + $avgGrowth); // Apply average growth rate
+    $futureSales[] = round($forecast, 2); // Round to 2 decimal places
+    $lastMonthSales = $forecast; // Update for next iteration
+}
+
+// Step 4: Display results
+echo "Historical Sales: " . implode(", ", $sales) . "\n";
+echo "Monthly Growth Rates: ";
+foreach ($growthRates as $rate) {
+    echo round($rate * 100, 2) . "%, ";
+}
+echo "\nAverage Growth Rate: " . round($avgGrowth * 100, 2) . "%\n";
+echo "Forecasted Sales for Next 3 Months: " . implode(", ", $futureSales) . "\n";
+?>
