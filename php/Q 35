@@ -1,0 +1,18 @@
+35. Write a PHP script using an array that checks if a string contains another string and displays the result.
+code:
+<?php
+// Array of keywords to search for
+$keywords = array("apple", "banana", "mango");
+
+// The main string
+$text = "I had an apple and a mango today.";
+
+// Loop through keywords
+foreach ($keywords as $word) {
+    if (strpos($text, $word) !== false) {
+        echo "The string contains '$word'.<br>";
+    } else {
+        echo "The string does NOT contain '$word'.<br>";
+    }
+}
+?>
