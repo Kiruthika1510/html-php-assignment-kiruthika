@@ -1,0 +1,13 @@
+<?php
+// Indexed array
+$fruits = ["Apple", "Banana", "Mango", "Orange"];
+
+// Delete "Banana" (index 1)
+unset($fruits[1]);
+
+print_r($fruits); // Keys now are [0,2,3]
+
+// Reindex array
+$fruits = array_values($fruits);
+print_r($fruits); // Keys now [0,1,2]
+?>
