@@ -1,0 +1,60 @@
+31. Remove the first element from an array in PHP using array functions.
+
+Code:
+<?php
+// Original array
+$fruits = array("Apple", "Banana", "Mango", "Orange");
+
+// Remove the first element
+$removed = array_shift($fruits);
+
+// Display removed element
+echo "Removed Element: " . $removed . "\n";
+
+// Display updated array
+echo "Updated Array: ";
+print_r($fruits);
+?>
+
+Output:
+Removed Element: Apple
+Updated Array: Array
+(
+    [0] => Banana
+    [1] => Mango
+    [2] => Orange
+)
+
+32. Infer the result of the following PHP code?
+a.<?php
+$mail = "admin@example.com";
+$mail = str_replace("a","@",$mail);
+echo "Contact me at $mail.";
+?>
+
+Code:
+<?php
+$mail = "admin@example.com";
+$mail = str_replace("a","@",$mail);
+echo "Contact me at $mail.";
+?>
+Output:
+Contact me at @dmin@x@mple.com.
+b. Determine the result of the following PHP code?
+<?php
+$names = array("alex", "jean", "emily", "jane");
+$name = preg_grep("/^e/", $names);
+print_r($name);
+?>
+Code:
+<?php
+$names = array("alex", "jean", "emily", "jane");
+$name = preg_grep("/^e/", $names);
+print_r($name);
+?>
+Output:
+Array
+(
+    [2] => emily
+)
+
