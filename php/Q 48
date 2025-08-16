@@ -1,0 +1,18 @@
+48. Record number handling in PHP with suitable examples.
+code:
+<?php
+// Array of student records
+$students = array("John", "Mary", "Peter", "Lucy", "David");
+
+// Get total number of records
+$total_records = count($students);
+echo "Total Records: " . $total_records . "<br>";
+
+// Access a specific record by record number (index)
+$record_no = 2; // 0-based index (so this is the 3rd record)
+if (isset($students[$record_no])) {
+    echo "Record at index $record_no: " . $students[$record_no];
+} else {
+    echo "Record not found!";
+}
+?>
