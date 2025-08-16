@@ -1,0 +1,16 @@
+65. Demonstrate PHP script that checks if a string contains another string and displays the result.
+code:
+<?php
+// Main string
+$mainString = "Hello, welcome to OpenAI GPT!";
+
+// String to search for
+$searchString = "OpenAI";
+
+// Check if $searchString exists in $mainString
+if (strpos($mainString, $searchString) !== false) {
+    echo "The string '$searchString' was found in the main string.";
+} else {
+    echo "The string '$searchString' was NOT found in the main string.";
+}
+?>
