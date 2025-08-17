@@ -1,0 +1,23 @@
+78. Elucidate the steps to read and delete existing cookies in the browser.
+code:
+
+<?php
+// Reading a cookie named 'username'
+if(isset($_COOKIE['username'])) {
+    echo "Welcome back, " . $_COOKIE['username'] . "!";
+} else {
+    echo "Cookie 'username' is not set.";
+}
+?>
+
+<?php
+// Delete the cookie 'username'
+setcookie("username", "", time() - 3600, "/"); // expired 1 hour ago
+
+// Confirm deletion
+if(!isset($_COOKIE['username'])) {
+    echo "Cookie 'username' deleted successfully.";
+} else {
+    echo "Cookie still exists.";
+}
+?>
