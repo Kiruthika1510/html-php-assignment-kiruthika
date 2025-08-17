@@ -1,0 +1,40 @@
+97. Discover the various session functions of PHP. Explain its behavior.
+code:
+<?php
+// 1. Start a session
+session_name("MYSESSION");  // Set a custom session name
+session_start();            // Start/resume session
+
+echo "<h3>PHP Session Functions Demonstration</h3>";
+
+// 2. Display session ID and save path
+echo "Session ID: " . session_id() . "<br>";
+echo "Session Name: " . session_name() . "<br>";
+echo "Session files are stored in: " . session_save_path() . "<br><br>";
+
+// 3. Register session variables
+$_SESSION['username'] = "JohnDoe";
+$_SESSION['email'] = "john@example.com";
+echo "<strong>Session variables registered:</strong><br>";
+echo "Username: " . $_SESSION['username'] . "<br>";
+echo "Email: " . $_SESSION['email'] . "<br><br>";
+
+// 4. Unset session variables
+session_unset();
+echo "<strong>After session_unset():</strong><br>";
+echo "<pre>";
+print_r($_SESSION); // Should be empty array
+echo "</pre>";
+
+// 5. Register variables again for demonstration
+$_SESSION['username'] = "JohnDoe";
+$_SESSION['email'] = "john@example.com";
+
+// 6. Destroy session
+session_destroy();
+echo "<strong>After session_destroy():</strong><br>";
+echo "Session destroyed. Variables still in this script execution:<br>";
+echo "<pre>";
+print_r($_SESSION); // Still accessible in this script, but session on server is destroyed
+echo "</pre>";
+?>
