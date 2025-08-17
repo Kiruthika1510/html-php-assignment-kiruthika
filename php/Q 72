@@ -1,0 +1,40 @@
+72. Write the PHP program to implement the following session functions.
+(i)session_register() (ii) session_unset() (iii) session_destroy()
+code:
+<?php
+// Start the session
+session_start();
+
+// -------------------
+// 1. session_register() (deprecated)
+// -------------------
+// Modern way to register session variables
+$_SESSION['username'] = "JohnDoe";
+$_SESSION['email'] = "johndoe@example.com";
+
+echo "<h3>After session_register (using \$_SESSION):</h3>";
+echo "Username: " . $_SESSION['username'] . "<br>";
+echo "Email: " . $_SESSION['email'] . "<br>";
+
+// -------------------
+// 2. session_unset()
+// -------------------
+// This will remove all session variables but not destroy the session
+session_unset();
+
+echo "<h3>After session_unset():</h3>";
+if(empty($_SESSION)) {
+    echo "All session variables are removed.<br>";
+} else {
+    echo "Session variables still exist.<br>";
+}
+
+// -------------------
+// 3. session_destroy()
+// -------------------
+// This will completely destroy the session
+session_destroy();
+
+echo "<h3>After session_destroy():</h3>";
+echo "Session is destroyed. Refreshing the page will start a new session.";
+?>
