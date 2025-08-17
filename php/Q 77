@@ -1,0 +1,57 @@
+77. Classify the various network functions which provide network information or functions.
+code:
+<?php
+echo "<h2>1. Network Information Functions</h2>";
+
+// Get IP address of a hostname
+$hostname = "www.google.com";
+$ip = gethostbyname($hostname);
+echo "IP of $hostname: $ip<br>";
+
+// Get hostnames (local machine)
+$localHost = gethostname();
+echo "Local Hostname: $localHost<br>";
+
+// Convert IP to long and back
+$ipLong = ip2long("127.0.0.1");
+echo "127.0.0.1 as long: $ipLong<br>";
+echo "Long back to IP: " . long2ip($ipLong) . "<br>";
+
+echo "<hr><h2>2. Network Connection Functions</h2>";
+
+// Attempt a socket connection to google on port 80
+$conn = @fsockopen("www.google.com", 80, $errno, $errstr, 5);
+if ($conn) {
+    echo "Connection to www.google.com on port 80 successful.<br>";
+    fclose($conn);
+} else {
+    echo "Connection failed: $errstr ($errno)<br>";
+}
+
+echo "<hr><h2>3. Network Diagnostic Functions</h2>";
+
+// Check DNS record
+$domain = "example.com";
+if (checkdnsrr($domain, "A")) {
+    echo "DNS A record exists for $domain.<br>";
+} else {
+    echo "No DNS A record found for $domain.<br>";
+}
+
+// Get MX records
+if (getmxrr($domain, $mxhosts)) {
+    echo "MX records for $domain: " . implode(", ", $mxhosts) . "<br>";
+} else {
+    echo "No MX records found for $domain.<br>";
+}
+
+echo "<hr><h2>4. Data Transfer / HTTP Functions</h2>";
+
+// Fetch contents from a URL
+$url = "https://www.example.com";
+$content = @file_get_contents($url);
+if ($content !== false) {
+    echo "Fetched content from $url (first 100 chars):<br>";
+    echo htmlspecialchars(substr($content, 0, 100)) . "...<br>";
+} else {
+    echo "Failed to fetch content from $ur
