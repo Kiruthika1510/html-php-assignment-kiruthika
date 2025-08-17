@@ -1,0 +1,18 @@
+74. Outline the file reading and writing functions of PHP with suitable examples.
+code:
+<?php
+// Open file for writing
+$file = fopen("sample.txt", "w");
+
+// Write content
+fwrite($file, "Hello World!\nThis is a test file.");
+
+// Close file
+fclose($file);
+
+// Using file_put_contents
+file_put_contents("sample2.txt", "Hello again!");
+
+// Output message
+echo "Files written successfully.";
+?>
