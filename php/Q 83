@@ -1,0 +1,36 @@
+83. Develop a PHP script to accept email addresses and validate it. Display the domain name of the
+email and result of validation.
+code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+</head>
+<body>
+<h2>Email Validation Form</h2>
+
+<form method="post" action="">
+    Enter Email: <input type="email" name="email" required>
+    <input type="submit" name="submit" value="Validate">
+</form>
+
+<?php
+if(isset($_POST['submit'])) {
+    $email = $_POST['email'];
+
+    // Validate email using filter_var
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $valid = "Valid Email";
+        
+        // Extract domain
+        $domain = substr(strrchr($email, "@"), 1); // gets string after '@'
+
+        echo "<p style='color:green;'>$valid</p>";
+        echo "<p>Domain Name: <strong>$domain</strong></p>";
+    } else {
+        echo "<p style='color:red;'>Invalid Email!</p>";
+    }
+}
+?>
+</body>
+</html>
