@@ -1,0 +1,43 @@
+82. Implement the setcookie( ) function with various arguments using the PHP program.
+code:
+<?php
+// 1. Basic cookie: name and value
+setcookie("basicCookie", "HelloWorld", time() + 3600); // Expires in 1 hour
+
+// 2. Cookie with custom path
+setcookie("pathCookie", "PathTest", time() + 3600, "/testpath"); 
+
+// 3. Cookie with domain
+// Note: Replace "yourdomain.com" with your actual domain if testing on server
+setcookie("domainCookie", "DomainTest", time() + 3600, "/", "yourdomain.com"); 
+
+// 4. Secure cookie (only sent over HTTPS)
+setcookie("secureCookie", "SecureTest", time() + 3600, "/", "", true); 
+
+// 5. HttpOnly cookie (cannot be accessed via JavaScript)
+setcookie("httpOnlyCookie", "HttpOnlyTest", time() + 3600, "/", "", false, true); 
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SetCookie Examples</title>
+</head>
+<body>
+<h2>SetCookie Function Demonstration</h2>
+
+<?php
+echo "<ul>";
+
+// Display cookie values (they will be available on the **next page load**)
+foreach ($_COOKIE as $name => $value) {
+    echo "<li>$name : $value</li>";
+}
+
+echo "</ul>";
+
+echo "<p>Cookies have been set with various arguments. Refresh the page to see them appear.</p>";
+?>
+</body>
+</html>
