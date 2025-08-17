@@ -1,0 +1,67 @@
+98. Model an Admin Login, Logout form using session variables in PHP.
+<?php
+session_start();
+
+// Dummy admin credentials
+$admin_username = "admin";
+$admin_password = "password123";
+
+// Handle Logout
+if(isset($_GET['action']) && $_GET['action'] == "logout") {
+    session_unset();
+    session_destroy();
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+}
+
+// Handle Login
+$login_error = "";
+if(isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if($username === $admin_username && $password === $admin_password) {
+        // Set session variables
+        $_SESSION['admin'] = $username;
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
+    } else {
+        $login_error = "Invalid username or password!";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login using PHP Sessions</title>
+</head>
+<body>
+<h2>Admin Login System</h2>
+
+<?php if(isset($_SESSION['admin'])): ?>
+    <p>Welcome, <strong><?php echo $_SESSION['admin']; ?></strong>!</p>
+    <p><a href="?action=logout">Logout</a></p>
+
+<?php else: ?>
+    <?php if($login_error != "") echo "<p style='color:red;'>$login_error</p>"; ?>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" name="login">Login</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+<?php endif; ?>
+</body>
+</html>
