@@ -1,0 +1,13 @@
+101. Identify, how a cookie’s value can be retrieved in a web application?
+<?php
+// Set a cookie
+setcookie("username", "JohnDoe", time() + 3600); // Expires in 1 hour
+?>
+<?php
+if(isset($_COOKIE['username'])) {
+    $username = $_COOKIE['username'];
+    echo "The username stored in cookie is: " . $username;
+} else {
+    echo "Cookie 'username' is not set.";
+}
+?>
