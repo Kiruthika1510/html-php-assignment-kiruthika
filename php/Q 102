@@ -1,0 +1,34 @@
+102. Develop a PHP program to use session variables and start a session.
+code:
+<?php
+// Start the session
+session_start();
+
+// Set session variables
+$_SESSION['username'] = "JohnDoe";
+$_SESSION['email'] = "john@example.com";
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Session Example</title>
+</head>
+<body>
+<h2>PHP Session Variables Example</h2>
+
+<?php
+// Access and display session variables
+if(isset($_SESSION['username']) && isset($_SESSION['email'])) {
+    echo "<p>Username: " . $_SESSION['username'] . "</p>";
+    echo "<p>Email: " . $_SESSION['email'] . "</p>";
+} else {
+    echo "<p>No session variables are set.</p>";
+}
+?>
+
+<!-- Link to another page to demonstrate session persistence -->
+<p><a href="page2.php">Go to Page 2</a></p>
+
+</body>
+</html>
