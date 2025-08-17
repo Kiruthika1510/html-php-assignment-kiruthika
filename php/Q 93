@@ -1,0 +1,24 @@
+93. Write a PHP program that keeps track of how many times a visitor has loaded the page.
+code:
+<?php
+session_start(); // Start the session
+
+// Check if the pageview session variable exists
+if(isset($_SESSION['page_count'])) {
+    $_SESSION['page_count'] += 1; // Increment count
+} else {
+    $_SESSION['page_count'] = 1;  // Initialize count
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page View Counter</title>
+</head>
+<body>
+<h2>Page Visit Counter</h2>
+<p>You have visited this page <strong><?php echo $_SESSION['page_count']; ?></strong> times.</p>
+</body>
+</html>
