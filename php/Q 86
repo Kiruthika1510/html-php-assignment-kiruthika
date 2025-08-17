@@ -1,0 +1,35 @@
+86. PHP File functions with example program.
+code:
+<?php
+$filename = "example.txt";
+
+// 1. Check if file exists
+if(!file_exists($filename)) {
+    echo "File does not exist. Creating file...<br>";
+    file_put_contents($filename, "This is the first line of the file.\n");
+}
+
+// 2. Open file for appending
+$file = fopen($filename, "a"); // append mode
+fwrite($file, "Appending a new line.\n");
+fclose($file);
+
+// 3. Read file content
+if(is_readable($filename)) {
+    echo "<h3>File Content:</h3>";
+    $content = file_get_contents($filename);
+    echo nl2br($content);
+}
+
+// 4. Display file size
+echo "<p>File size: " . filesize($filename) . " bytes</p>";
+
+// 5. Check if writable
+if(is_writable($filename)) {
+    echo "<p>The file is writable.</p>";
+}
+
+// 6. Delete the file (optional)
+// unlink($filename);
+// echo "<p>File deleted successfully.</p>";
+?>
