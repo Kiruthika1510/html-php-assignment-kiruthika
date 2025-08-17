@@ -1,0 +1,104 @@
+99. Build a PHP program to apply the following tasks using session.
+(a) Initiate a session (or pick up an existing one).
+(b) Check for the existence of a pre-existing entry in $_SESSION. If not present, assume
+that the session is new.
+(c) Increment a counter that tracks how many times that the user has visited this page.
+(d) Store the incremented counter back in $_SESSION.
+(e) Provide a link back to the page itself, embedding the session ID as an argument if it is
+found.
+(f) Using PHP, construct a program to restrict the user from uploading the same file again
+and again. If the same file already exists in that folder, display an appropriate error
+message.
+code:
+<?php
+session_start(); // (a) Initiate a session or resume existing
+
+// (b) Check for existing session entry
+if(!isset($_SESSION['visit_count'])) {
+    $_SESSION['visit_count'] = 0; // New session
+    $new_session = true;
+} else {
+    $new_session = false;
+}
+
+// (c) Increment the page visit counter
+$_SESSION['visit_count']++;
+
+// (d) Store the incremented counter back in $_SESSION
+$counter = $_SESSION['visit_count'];
+
+// (e) Construct link back to page with session ID (if using URL-based sessions)
+$self_link = $_SERVER['PHP_SELF'];
+if(session_id() != "") {
+    $self_link .= "?".session_name()."=".session_id();
+}
+
+// (f) File upload handling to restrict duplicate files
+$upload_msg = "";
+$upload_dir = "uploads/";
+
+// Create upload folder if not exists
+if(!is_dir($upload_dir)) {
+    mkdir($upload_dir, 0777, true);
+}
+
+if(isset($_POST['upload'])) {
+    $file_name = $_FILES['file']['name'];
+    $file_tmp = $_FILES['file']['tmp_name'];
+
+    if(file_exists($upload_dir . $file_name)) {
+        $upload_msg = "Error: The file '$file_name' already exists!";
+    } else {
+        move_uploaded_file($file_tmp, $upload_dir . $file_name);
+        $upload_msg = "File '$file_name' uploaded successfully.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Session and File Upload Example</title>
+</head>
+<body>
+<h2>PHP Session and File Upload Example</h2>
+
+<!-- (c) Display page visit count -->
+<p>
+<?php
+if($new_session) {
+    echo "Welcome! This is your first visit.<br>";
+} 
+echo "You have visited this page <strong>$counter</strong> times.";
+?>
+</p>
+
+<!-- (e) Link back to page with session ID -->
+<p><a href="<?php echo $self_link; ?>">Reload Page</a></p>
+
+<hr>
+
+<!-- (f) File Upload Form -->
+<h3>Upload a File</h3>
+<form method="post" enctype="multipart/form-data">
+    Select file to upload: <input type="file" name="file" required>
+    <button type="submit" name="upload">Upload</button>
+</form>
+
+<p style="color:red;"><?php echo $upload_msg; ?></p>
+
+<!-- List uploaded files -->
+<?php
+$files = scandir($upload_dir);
+if(count($files) > 2) {
+    echo "<h4>Uploaded Files:</h4><ul>";
+    foreach($files as $file) {
+        if($file != "." && $file != "..") {
+            echo "<li>$file</li>";
+        }
+    }
+    echo "</ul>";
+}
+?>
+</body>
+</html>
