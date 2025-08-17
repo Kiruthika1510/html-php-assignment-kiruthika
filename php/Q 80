@@ -1,0 +1,17 @@
+80. Build a test cookie with the setcookie( ) function using PHP.
+code:
+<?php
+// Set a test cookie named "TestCookie" with value "HelloWorld"
+// Cookie expires in 1 hour (3600 seconds) and is available across the whole domain
+setcookie("TestCookie", "HelloWorld", time() + 3600, "/");
+
+// Display message
+echo "<h3>Test Cookie Example</h3>";
+
+// Check if cookie is set
+if(isset($_COOKIE['TestCookie'])) {
+    echo "Cookie 'TestCookie' is set! Value: " . $_COOKIE['TestCookie'];
+} else {
+    echo "Cookie 'TestCookie' is not set yet. Please refresh the page.";
+}
+?>
