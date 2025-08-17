@@ -1,0 +1,57 @@
+84. Implement a PHP program that creates sessions, sets values in sessions, and removes data from
+the sessions.
+code:
+<?php
+session_start(); // Start the session
+
+// Handle setting session values
+if(isset($_POST['set'])) {
+    $_SESSION['username'] = $_POST['username'];
+    $_SESSION['email'] = $_POST['email'];
+}
+
+// Handle removing a specific session variable
+if(isset($_POST['unset'])) {
+    unset($_SESSION['email']); // Remove only the 'email' session
+}
+
+// Handle destroying the entire session
+if(isset($_POST['destroy'])) {
+    session_destroy(); // Remove all session data
+    header("Location: " . $_SERVER['PHP_SELF']); // Refresh page to reset
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Session Demo</title>
+</head>
+<body>
+<h2>PHP Session Example</h2>
+
+<form method="post" action="">
+    <label>Username:</label>
+    <input type="text" name="username" required><br><br>
+    
+    <label>Email:</label>
+    <input type="email" name="email" required><br><br>
+    
+    <input type="submit" name="set" value="Set Session Values">
+    <input type="submit" name="unset" value="Unset Email Session">
+    <input type="submit" name="destroy" value="Destroy Session">
+</form>
+
+<h3>Current Session Data:</h3>
+<?php
+if(!empty($_SESSION)) {
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
+} else {
+    echo "<p>No session data available.</p>";
+}
+?>
+</body>
+</html>
