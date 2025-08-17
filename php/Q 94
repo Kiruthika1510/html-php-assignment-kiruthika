@@ -1,0 +1,32 @@
+94. Evaluate the different file handling modes available in PHP with appropriate examples.
+code
+<?php
+$filename = "file_modes.txt";
+
+// 1. Write mode (w) - overwrites existing file or creates new
+$file = fopen($filename, "w");
+fwrite($file, "This is written in write mode (w).\n");
+fclose($file);
+
+// 2. Append mode (a) - adds data to end of file
+$file = fopen($filename, "a");
+fwrite($file, "This line is appended (a mode).\n");
+fclose($file);
+
+// 3. Read mode (r) - read file content
+$file = fopen($filename, "r");
+echo "<h3>File Content (Read Mode r):</h3>";
+while(!feof($file)) {
+    echo nl2br(fgets($file));
+}
+fclose($file);
+
+// 4. Read/Write mode (r+)
+$file = fopen($filename, "r+");
+fwrite($file, "Reading and writing (r+ mode)!\n");
+fclose($file);
+
+// Display final content
+echo "<h3>Final File Content:</h3>";
+echo nl2br(file_get_contents($filename));
+?>
